@@ -25,11 +25,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/regcostajr/go-web3/complex/types"
-	"github.com/regcostajr/go-web3/dto"
+	"github.com/iuouiyiuty/go-web3/complex/types"
+	"github.com/iuouiyiuty/go-web3/dto"
 	"strings"
 
-	"github.com/regcostajr/go-web3/utils"
+	"github.com/iuouiyiuty/go-web3/utils"
 	"math/big"
 )
 
@@ -193,7 +193,7 @@ func (contract *Contract) getHexValue(inputType string, value interface{}) (stri
 			}
 		}
 
-		data += fmt.Sprintf("%064s", fmt.Sprintf("%x", bigVal.String()))
+		data += fmt.Sprintf("%064s", fmt.Sprintf("%x", bigVal))
 	}
 
 	if strings.Compare("address", inputType) == 0 {

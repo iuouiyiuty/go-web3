@@ -22,9 +22,9 @@
 package utils
 
 import (
-	"github.com/regcostajr/go-web3/complex/types"
-	"github.com/regcostajr/go-web3/dto"
-	"github.com/regcostajr/go-web3/providers"
+	"github.com/iuouiyiuty/go-web3/complex/types"
+	"github.com/iuouiyiuty/go-web3/dto"
+	"github.com/iuouiyiuty/go-web3/providers"
 )
 
 // Utils - The Utils Module

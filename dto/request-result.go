@@ -26,8 +26,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/regcostajr/go-web3/complex/types"
-	"github.com/regcostajr/go-web3/constants"
+	"github.com/iuouiyiuty/go-web3/complex/types"
+	"github.com/iuouiyiuty/go-web3/constants"
 
 	"encoding/json"
 	"fmt"
@@ -282,6 +282,11 @@ func (pointer *RequestResult) ToSyncingResponse() (*SyncingResponse, error) {
 		return nil, customerror.EMPTYRESPONSE
 	}
 
+	syncingResponseHex := &struct{
+		StartingBlock string `json:"startingBlock"`
+		CurrentBlock  string `json:"currentBlock"`
+		HighestBlock  string `json:"highestBlock"`
+	}{}
 	syncingResponse := &SyncingResponse{}
 
 	marshal, err := json.Marshal(result)
@@ -290,7 +295,10 @@ func (pointer *RequestResult) ToSyncingResponse() (*SyncingResponse, error) {
 		return nil, customerror.UNPARSEABLEINTERFACE
 	}
 
-	json.Unmarshal([]byte(marshal), syncingResponse)
+	json.Unmarshal([]byte(marshal), syncingResponseHex)
+	syncingResponse.StartingBlock, _ = big.NewInt(0).SetString(syncingResponseHex.StartingBlock, 0)
+	syncingResponse.HighestBlock, _ = big.NewInt(0).SetString(syncingResponseHex.HighestBlock, 0)
+	syncingResponse.CurrentBlock, _ = big.NewInt(0).SetString(syncingResponseHex.CurrentBlock, 0)
 
 	return syncingResponse, nil
 

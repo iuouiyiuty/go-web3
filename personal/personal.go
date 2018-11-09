@@ -22,8 +22,8 @@
 package personal
 
 import (
-	"github.com/regcostajr/go-web3/dto"
-	"github.com/regcostajr/go-web3/providers"
+	"github.com/iuouiyiuty/go-web3/dto"
+	"github.com/iuouiyiuty/go-web3/providers"
 )
 
 // Personal - The Personal Module
@@ -143,6 +143,29 @@ func (personal *Personal) UnlockAccount(address string, password string, duratio
 	pointer := &dto.RequestResult{}
 
 	err := personal.provider.SendRequest(pointer, "personal_unlockAccount", params)
+
+	if err != nil {
+		return false, err
+	}
+
+	return pointer.ToBoolean()
+
+}
+
+// LockAccount - Lock specified account for use.
+// Reference: https://github.com/paritytech/parity/wiki/JSONRPC-personal-module#personal_lockaccount
+// Parameters:
+//    - Address - 20 Bytes - The address of the account to lock.
+// Returns:
+// 	   - Boolean - whether the call was successful
+func (personal *Personal) LockAccount(address string) (bool, error) {
+
+	params := make([]interface{}, 1)
+	params[0] = address
+
+	pointer := &dto.RequestResult{}
+
+	err := personal.provider.SendRequest(pointer, "personal_lockAccount", params)
 
 	if err != nil {
 		return false, err

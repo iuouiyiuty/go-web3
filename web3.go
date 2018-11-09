@@ -22,12 +22,12 @@
 package web3
 
 import (
-	"github.com/regcostajr/go-web3/dto"
-	"github.com/regcostajr/go-web3/eth"
-	"github.com/regcostajr/go-web3/net"
-	"github.com/regcostajr/go-web3/personal"
-	"github.com/regcostajr/go-web3/providers"
-	"github.com/regcostajr/go-web3/utils"
+	"github.com/iuouiyiuty/go-web3/dto"
+	"github.com/iuouiyiuty/go-web3/eth"
+	"github.com/iuouiyiuty/go-web3/net"
+	"github.com/iuouiyiuty/go-web3/personal"
+	"github.com/iuouiyiuty/go-web3/providers"
+	"github.com/iuouiyiuty/go-web3/utils"
 )
 
 // Coin - Ethereum value unity value

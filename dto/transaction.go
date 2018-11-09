@@ -25,7 +25,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/regcostajr/go-web3/complex/types"
+	"github.com/iuouiyiuty/go-web3/complex/types"
 	"math/big"
 )
 
@@ -82,16 +82,16 @@ type SignTransactionResponse struct {
 }
 
 type SignedTransactionParams struct {
-	Gas      *big.Int `json:gas`
-	GasPrice *big.Int `json:gasPrice`
-	Hash     string   `json:hash`
-	Input    string   `json:input`
-	Nonce    *big.Int `json:nonce`
-	S        string   `json:s`
-	R        string   `json:r`
-	V        *big.Int `json:v`
-	To       string   `json:to`
-	Value    *big.Int `json:value`
+	Gas      *big.Int `json:"gas"`
+	GasPrice *big.Int `json:"gasPrice"`
+	Hash     string   `json:"hash"`
+	Input    string   `json:"input"`
+	Nonce    *big.Int `json:"nonce"`
+	S        string   `json:"s"`
+	R        string   `json:"r"`
+	V        *big.Int `json:"v"`
+	To       string   `json:"to"`
+	Value    *big.Int `json:"value"`
 }
 
 type TransactionResponse struct {
@@ -292,6 +292,9 @@ func (r *TransactionReceipt) UnmarshalJSON(data []byte) error {
 		return errors.New(fmt.Sprintf("Error converting %s to BigInt", temp.CumulativeGasUsed))
 	}
 
+	if temp.Status == "" {
+		temp.Status = "0x0"
+	}
 	status, success := big.NewInt(0).SetString(temp.Status[2:], 16)
 	if !success {
 		return errors.New(fmt.Sprintf("Error converting %s to BigInt", temp.Status))
@@ -313,11 +316,11 @@ func (sp *SignedTransactionParams) UnmarshalJSON(data []byte) error {
 	type Alias SignedTransactionParams
 
 	temp := &struct {
-		Gas      string `json:gas`
-		GasPrice string `json:gasPrice`
-		Nonce    string `json:nonce`
-		V        string `json:v`
-		Value    string `json:value`
+		Gas      string `json:"gas"`
+		GasPrice string `json:"gasPrice"`
+		Nonce    string `json:"nonce"`
+		V        string `json:"v"`
+		Value    string `json:"value"`
 		*Alias
 	}{
 		Alias: (*Alias)(sp),

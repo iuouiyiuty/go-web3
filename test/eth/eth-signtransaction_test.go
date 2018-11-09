@@ -24,10 +24,10 @@ import (
 	"testing"
 
 	"fmt"
-	"github.com/regcostajr/go-web3"
-	"github.com/regcostajr/go-web3/complex/types"
-	"github.com/regcostajr/go-web3/dto"
-	"github.com/regcostajr/go-web3/providers"
+	"github.com/iuouiyiuty/go-web3"
+	"github.com/iuouiyiuty/go-web3/complex/types"
+	"github.com/iuouiyiuty/go-web3/dto"
+	"github.com/iuouiyiuty/go-web3/providers"
 	"math/big"
 )
 
