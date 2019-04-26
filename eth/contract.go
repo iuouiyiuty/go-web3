@@ -82,6 +82,10 @@ func (eth *Eth) NewContract(abi string) (*Contract, error) {
 	return contract, nil
 }
 
+func (contract *Contract) PrepareTransaction(transaction *dto.TransactionParameters, functionName string, args []interface{}) (*dto.TransactionParameters, error) {
+	return contract.prepareTransaction(transaction, functionName, args)
+}
+
 // prepareTransaction ...
 func (contract *Contract) prepareTransaction(transaction *dto.TransactionParameters, functionName string, args []interface{}) (*dto.TransactionParameters, error) {
 
